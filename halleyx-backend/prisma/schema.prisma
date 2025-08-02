@@ -1,0 +1,113 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum Role {
+  CUSTOMER
+  ADMIN
+}
+
+enum OrderStatus {
+  PENDING
+  COMPLETED
+  CANCELLED
+  SHIPPED
+  DELIVERED
+}
+
+model Admin {
+  id        String   @id @default(uuid())
+  email     String   @unique
+  password  String
+  firstName String
+  lastName  String
+  role      Role     @default(ADMIN)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Customer {
+  id        String   @id @default(uuid())
+  email     String   @unique
+  password  String
+  firstName String
+  lastName  String
+  role      Role     @default(CUSTOMER)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  status    String   @default("active")
+
+  orders    Order[]
+  cart      Cart?
+}
+
+model Product {
+  id            String    @id @default(uuid())
+  name          String
+  description   String?
+  price         Float
+  stockQuantity Int
+  imageUrl      String?
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+
+  cartItems     CartItem[]
+  orderItems    OrderItem[]
+}
+
+// A cart belongs to a single customer.
+model Cart {
+  id         String     @id @default(uuid())
+  customerId String     @unique
+  customer   Customer   @relation(fields: [customerId], references: [id])
+  items      CartItem[]
+}
+
+// A cart item links a product to a cart.
+// The composite unique key prevents duplicate products in the same cart.
+model CartItem {
+  id         String   @id @default(uuid())
+  cartId     String
+  productId  String
+  quantity   Int
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+  
+  cart       Cart     @relation(fields: [cartId], references: [id])
+  product    Product  @relation(fields: [productId], references: [id])
+
+  @@unique([cartId, productId], name: "cartId_productId")
+}
+
+model Order {
+  id          String      @id @default(uuid())
+  customer    Customer    @relation(fields: [customerId], references: [id])
+  customerId  String
+  totalAmount Float
+  status      OrderStatus @default(PENDING)
+  createdAt   DateTime    @default(now())
+  updatedAt   DateTime    @updatedAt
+
+  items OrderItem[]
+}
+
+model OrderItem {
+  id         String   @id @default(uuid())
+  order      Order    @relation(fields: [orderId], references: [id])
+  orderId    String
+  product    Product  @relation(fields: [productId], references: [id])
+  productId  String
+  quantity   Int
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+
+  @@unique([orderId, productId])
+}

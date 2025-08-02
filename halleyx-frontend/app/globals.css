@@ -1,0 +1,221 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* app/globals.css */
+
+/* Base styles for the entire application */
+html, body {
+  padding: 0;
+  margin: 0;
+  font-family: 'Inter', sans-serif; /* Using Inter as requested */
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+/* Fallback utility classes in case Tailwind doesn't load */
+.flex { display: flex; }
+.flex-col { flex-direction: column; }
+.items-center { align-items: center; }
+.justify-center { justify-content: center; }
+.justify-between { justify-content: space-between; }
+.space-x-4 > * + * { margin-left: 1rem; }
+.space-y-4 > * + * { margin-top: 1rem; }
+.grid { display: grid; }
+.grid-cols-1 { grid-template-columns: repeat(1, minmax(0, 1fr)); }
+.gap-4 { gap: 1rem; }
+.gap-6 { gap: 1.5rem; }
+.p-4 { padding: 1rem; }
+.p-6 { padding: 1.5rem; }
+.px-4 { padding-left: 1rem; padding-right: 1rem; }
+.py-2 { padding-top: 0.5rem; padding-bottom: 0.5rem; }
+.py-6 { padding-top: 1.5rem; padding-bottom: 1.5rem; }
+.m-4 { margin: 1rem; }
+.mb-4 { margin-bottom: 1rem; }
+.mb-8 { margin-bottom: 2rem; }
+.mt-4 { margin-top: 1rem; }
+.mx-auto { margin-left: auto; margin-right: auto; }
+.max-w-7xl { max-width: 80rem; }
+.rounded-lg { border-radius: 0.5rem; }
+.rounded-xl { border-radius: 0.75rem; }
+.shadow-sm { box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05); }
+.border { border-width: 1px; }
+.border-b { border-bottom-width: 1px; }
+.border-gray-200 { border-color: #e5e7eb; }
+.text-center { text-align: center; }
+.text-white { color: #ffffff; }
+.text-gray-600 { color: #4b5563; }
+.text-gray-900 { color: #111827; }
+.text-blue-600 { color: #2563eb; }
+.text-green-600 { color: #16a34a; }
+.text-red-600 { color: #dc2626; }
+.bg-white { background-color: #ffffff; }
+.bg-blue-600 { background-color: #2563eb; }
+.bg-gray-50 { background-color: #f9fafb; }
+.bg-gray-100 { background-color: #f3f4f6; }
+.hover\:bg-blue-700:hover { background-color: #1d4ed8; }
+.hover\:text-blue-600:hover { color: #2563eb; }
+.transition-colors { transition-property: color, background-color, border-color, text-decoration-color, fill, stroke; }
+.duration-200 { transition-duration: 200ms; }
+.font-medium { font-weight: 500; }
+.font-bold { font-weight: 700; }
+.text-sm { font-size: 0.875rem; line-height: 1.25rem; }
+.text-lg { font-size: 1.125rem; line-height: 1.75rem; }
+.text-xl { font-size: 1.25rem; line-height: 1.75rem; }
+.text-2xl { font-size: 1.5rem; line-height: 2rem; }
+.text-3xl { font-size: 1.875rem; line-height: 2.25rem; }
+
+/* Responsive utilities */
+@media (min-width: 768px) {
+  .md\:flex { display: flex; }
+  .md\:grid-cols-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .md\:grid-cols-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .md\:hidden { display: none; }
+}
+
+@media (min-width: 1024px) {
+  .lg\:grid-cols-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .lg\:grid-cols-4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+}
+
+@media (min-width: 1280px) {
+  .xl\:grid-cols-4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+}
+
+/* Define CSS Variables for Light Mode (Mela Water) */
+:root {
+  --background-color: linear-gradient(135deg, #FFFFE0, #F0FFF0); /* Light yellow to light green */
+  --text-color: #333333;
+  --secondary-text-color: #696969;
+  --primary-color: #32CD32; /* Cheerful LimeGreen */
+  --primary-hover-color: #228B22; /* Darker ForestGreen */
+  --accent-color: #FFD700; /* Gold for highlight/accents */
+  --link-color: #FFA500; /* Orange for links */
+  --link-hover-color: #FF8C00; /* Darker orange */
+  --card-background: rgba(255, 255, 255, 0.9); /* White with slight transparency */
+  --input-background: rgba(255, 255, 255, 0.8); /* White with more transparency */
+  --button-text-color: #ffffff; /* White text for primary buttons */
+  --secondary-button-background: rgba(255, 255, 255, 0.7); /* Lighter white for secondary */
+  --secondary-button-text-color: #333333; /* Dark text for secondary buttons */
+  --secondary-button-hover-background: rgba(255, 255, 255, 0.9);
+  --border-color: rgba(50, 205, 50, 0.3); /* Subtle green border */
+  --card-shadow: 0 4px 12px rgba(50, 205, 50, 0.1); /* Soft green shadow */
+  --card-hover-shadow: 0 8px 20px rgba(50, 205, 50, 0.2);
+  --input-focus-border: #32CD32;
+  --input-focus-shadow: 0 0 0 3px rgba(50, 205, 50, 0.3);
+  --error-color: #DC2626; /* Red */
+  --error-hover-color: #B91C1C; /* Darker red */
+  --disabled-color: #A7D9A7; /* Lighter primary for disabled */
+  --button-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --button-hover-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+
+  /* General border-radius values */
+  --border-radius: 0.75rem; /* For cards, larger elements */
+  --border-radius-sm: 0.5rem; /* For buttons, inputs */
+  --font-family: 'Inter', sans-serif;
+}
+
+/* Define CSS Variables for Dark Mode (Experience Vinyl) */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background-color: linear-gradient(135deg, #3d2727, #2a0404); /* Black to very dark red */
+    --text-color: #b8a900; /* Off-white */
+    --secondary-text-color: #B0B0B0; /* Medium grey */
+    --primary-color: #8B0000; /* Luxurious Dark Red */
+    --primary-hover-color: #A52A2A; /* Slightly brighter Brownish Red */
+    --accent-color: #FFD700; /* Gold for highlight/accents */
+    --link-color: #FFA500; /* Orange for links */
+    --link-hover-color: #FF8C00; /* Darker orange */
+    --card-background: rgba(26, 0, 0, 0.8); /* Very dark red with transparency */
+    --input-background: rgba(40, 0, 0, 0.7); /* Darker red with more transparency */
+    --button-text-color: #ffffff; /* White text for primary buttons */
+    --secondary-button-background: rgba(50, 0, 0, 0.6); /* Darker red for secondary */
+    --secondary-button-text-color: #F0F0F0; /* Light text for secondary buttons */
+    --secondary-button-hover-background: rgba(70, 0, 0, 0.8);
+    --border-color: rgba(229, 58, 58, 0.4); /* Subtle dark red border */
+    --card-shadow: 0 4px 12px rgba(139, 0, 0, 0.2); /* Dark red shadow */
+    --card-hover-shadow: 0 8px 20px rgba(139, 0, 0, 0.4);
+    --input-focus-border: #8B0000;
+    --input-focus-shadow: 0 0 0 3px rgba(139, 0, 0, 0.4);
+    --error-color: #EF4444; /* Lighter red for dark mode errors */
+    --error-hover-color: #DC2626; /* Darker red */
+    --disabled-color: #5C0000; /* Darker primary for disabled */
+    --button-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.2), 0 2px 4px -1px rgba(0, 0, 0, 0.1);
+    --button-hover-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.2), 0 4px 6px -2px rgba(0, 0, 0, 0.15);
+  }
+}
+
+/* Specific element styling using variables */
+.home-header h1 {
+  color: var(--primary-color);
+  transition: color 0.3s ease;
+}
+
+.product-name {
+  color: var(--primary-color);
+  transition: color 0.3s ease;
+}
+
+.product-price {
+  color: var(--primary-hover-color); /* Using primary-hover for product price */
+  transition: color 0.3s ease;
+}
+
+/* Basic animations (if you want to use them, ensure your Next.js config allows it or remove if not needed) */
+@keyframes fadeInFromBottom {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fadeInFromBottom 0.8s ease-out forwards;
+  opacity: 0; /* Start invisible */
+}
+
+.animate-fade-in-up.delay-200 {
+  animation-delay: 0.2s;
+}
+
+.animate-fade-in-up.delay-400 {
+  animation-delay: 0.4s;
+}
+
+.animate-fade-in-up.delay-600 {
+  animation-delay: 0.6s;
+}
+
+.animate-fade-in-up.delay-800 {
+  animation-delay: 0.8s;
+}
+
+.animate-fade-in-up.delay-1000 {
+  animation-delay: 1s;
+}
+/* Responsive styles */
+@media (max-width: 768px) {
+  .home-header h1 {
+    font-size: 1.5rem;
+  }
+}
+@media (max-width: 480px) {
+  .home-header h1 {
+    font-size: 1.25rem;
+  }
+}
