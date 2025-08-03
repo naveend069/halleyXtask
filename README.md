@@ -1,7 +1,3 @@
-EADME.md
-markdown
-Copy
-Edit
 # HalleyX SaaS Admin & Customer Portal
 
 A full-stack web application built to simulate a clean SaaS-style BSS (Business Support System) platform like Halleyx. It features modern UI/UX and robust backend architecture with admin and customer portals.
@@ -10,7 +6,7 @@ A full-stack web application built to simulate a clean SaaS-style BSS (Business 
 
 ### 🚀 Frontend
 - **Framework:** Next.js (App Router)
-- **Styling:** CSS (Custom), No Tailwind
+- **Styling:** CSS (Custom), Tailwind
 - **Features:** Responsive UI, Light/Dark mode toggle, Tutorial embed, AI exercise assistant
 
 ### 🔐 Backend
@@ -108,16 +104,4 @@ MIT License. © 2025 Naveen D
 👨‍💻 Author
 Built with ❤️ by Naveen D for the Halleyx EGS 2025 Coding Challenge.
 
-yaml
-Copy
-Edit
 
----
-
-Let me know if you'd like:
-- A **shorter version**
-- A **screenshot section**
-- GitHub **badges**
-- or project **deployment instructions** (e.g., Vercel, Railway)
-
-Want me to add this to your repo and commit it?
