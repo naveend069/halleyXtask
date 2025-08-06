@@ -1,3 +1,4 @@
+output link:https://drive.google.com/file/d/1B_QxIUWUj3A2gNxBWFF51nPHEn0Pwkhv/view?usp=sharing
 # HalleyX SaaS Admin & Customer Portal
 
 A full-stack web application built to simulate a clean SaaS-style BSS (Business Support System) platform like Halleyx. It features modern UI/UX and robust backend architecture with admin and customer portals.
